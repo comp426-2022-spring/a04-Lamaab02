@@ -8,7 +8,7 @@ if(row === undefined){
 
 console.log('Log database appears to be missing. creating log database')
 const sqlInit = `
-    CREATE TABLE 
+    CREATE TABLE acceess ( id  INTEGER PRIMARY KEY, remote-addr VARCHAR, remote-user VARCHAR, datetime VARCHAR, method VARCHAR, url VARCHAR, http-version NUMERIC, status INTEGER, content-length NUMERIC )
 `
 logdb.exec(sqlInit)
 } else {
