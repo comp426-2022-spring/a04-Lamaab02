@@ -1,26 +1,21 @@
+const { exit } = require('process')
 const express = require('express')
-const { get } = require('http')
 const app = express()
-
-
+const morgan = require('morgan')
 const fs = require('fs')
 
-const morgan = require('morgan')
-const { exit } = require('process')
 const args = require('minimist')(process.argv.slice(2), {
     boolean: ['debug', 'log'],
-    default:{
+    default: {
         debug: false,
         log: false,
     }
-})
-
-
-
+}) 
 args['port', 'log', 'debug']
+
 console.log(args)
 
-if(args.help){
+if (args.help) {
     console.log(
         "server.js [options] \n" + 
         "\n" +
@@ -33,13 +28,14 @@ if(args.help){
     exit(0);
 }
 
+
 const logdb = require('./database')
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 
-const port = args.port || process.env.port || 5000
+const port = args.port || 5555
 
 const server = app.listen(port, () =>{
     console.log('App is running on port %PORT%'.replace('%PORT%', port))
