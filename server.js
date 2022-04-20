@@ -44,7 +44,7 @@ const server = app.listen(port, () =>{
 
 app.get('/app/', (req, res)=>{
     res.statusCode = 200;
-    res.status.statusMessage = "OK";
+    res.statusMessage = "OK";
     res.writeHead(res.statusCode, {'content-Type' : 'text/plain'});
     res.end(res.statusCode + ' ' + res.statusMessage)
 });
@@ -87,9 +87,9 @@ if (args.log == true) {
 }
 
 
-app.use(function(req, res){
+app.use(function(req, res) {
     res.status(404).send('404 NOT FOUND')
-})
+  });
 
 
 
